@@ -1,11 +1,17 @@
 <template>
-    <div>Index page</div>
-    Hello {{ counter }}!
+    <MainLayout>
+        <div>Index page</div>
+        <Link href="/hello">Go to show page</Link>
+
+        <div>The message is: {{ props.message }}</div>
+    </MainLayout>
 </template>
 
 <script setup>
-    import {ref} from 'vue';
+    import {Link} from '@inertiajs/vue3'
+    import MainLayout from '../../Layouts/MainLayout.vue'
 
-    const counter = ref(0);
-    setInterval(() => counter.value++, 1000);
+    const props = defineProps({
+        message: String
+    })
 </script>
