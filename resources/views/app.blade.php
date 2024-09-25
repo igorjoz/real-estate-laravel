@@ -6,6 +6,8 @@
 
         <title>Real estate app</title>
 
+        {{-- @routes --}}
+        @routes()
         @vite('resources/js/app.js')
         @inertiaHead
     </head>
