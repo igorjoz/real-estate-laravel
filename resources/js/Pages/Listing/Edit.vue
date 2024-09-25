@@ -1,0 +1,125 @@
+<template>
+    <form @submit.prevent="update">
+      <div>
+        <div>
+          <label>Beds</label>
+          <input v-model.number="form.beds" type="text" />
+          <div v-if="form.errors.beds">
+            {{ form.errors.beds }}
+          </div>
+        </div>
+
+        <div>
+          <label>Baths</label>
+          <input v-model.number="form.baths" type="text" />
+          <div v-if="form.errors.baths">
+            {{ form.errors.baths }}
+          </div>
+        </div>
+
+        <div>
+          <label>Area</label>
+          <input v-model.number="form.area" type="text" />
+          <div v-if="form.errors.area">
+            {{ form.errors.area }}
+          </div>
+        </div>
+
+        <div>
+          <label>City</label>
+          <input v-model="form.city" type="text" />
+          <div v-if="form.errors.city">
+            {{ form.errors.city }}
+          </div>
+        </div>
+
+        <div>
+          <label>Post Code</label>
+          <input v-model="form.code" type="text" />
+          <div v-if="form.errors.code">
+            {{ form.errors.code }}
+          </div>
+        </div>
+
+        <div>
+          <label>Street</label>
+          <input v-model="form.street_name" type="text" />
+          <div v-if="form.errors.street_name">
+            {{ form.errors.street_name }}
+          </div>
+        </div>
+
+        <div>
+          <label>Street Nr</label>
+          <input v-model.number="form.street_number" type="text" />
+          <div v-if="form.errors.street_number">
+            {{ form.errors.street_number }}
+          </div>
+        </div>
+
+        <div>
+          <label>Price</label>
+          <input v-model.number="form.price" type="text" />
+          <div v-if="form.errors.price">
+            {{ form.errors.price }}
+          </div>
+        </div>
+
+        <div>
+          <button type="submit">Edit</button>
+        </div>
+      </div>
+    </form>
+  </template>
+
+<script setup>
+    import { useForm } from '@inertiajs/vue3'
+    import { defineProps } from 'vue'
+    import { router } from '@inertiajs/vue3'
+
+    const props = defineProps({
+        listing: Object,
+    })
+
+    const form = useForm({
+        beds: props.listing.beds,
+        baths: props.listing.baths,
+        area: props.listing.area,
+        city: props.listing.city,
+        code: props.listing.code,
+        street_name: props.listing.street_name,
+        street_number: props.listing.street_number,
+        price: props.listing.price,
+    })
+
+    // const update = () => {
+    //     form.put(route('listing.update', {listing: props.listing.id}), {
+    //         onSuccess: () => router.get('/listing'),
+    //         onError: (errors) => {
+    //             form.errors = errors
+    //         },
+    //     })
+
+    // const update = () => {
+    //     form.put(route("listing.update", {listing: props.listing.id}), {
+    //         onSuccess: () => router.replace('/listing'),
+    //         onError: (errors) => {
+    //             form.errors = errors
+    //         },
+    //     })
+    // }
+
+    const update = () => {
+        form.put(route("listing.update", {listing: props.listing.id}))
+    }
+</script>
+
+<style scoped>
+    label {
+        margin-right: 2em;
+    }
+
+    div {
+        padding: 2px
+    }
+</style>
