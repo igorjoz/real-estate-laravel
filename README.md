@@ -27,6 +27,7 @@ Project to learn Vue.js, Inertia & Tailwind CSS
 - run ```composer install```
   - in case of problems, delete ```composer.lock``` and then run ```composer install``` again
 - run ```npm install```
+- run ```docker compose up```
 - run ```php artisan serve```
 - run ```npm run dev```
 - run ```php artisan migrate```
